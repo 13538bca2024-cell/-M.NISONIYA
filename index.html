@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lucky Box Game</title>
+  <style>
+    body {
+      background: linear-gradient(to top right, #ffe6f0, #e6f7ff);
+      overflow: hidden;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    .confetti {
+      animation: fall 5s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .doll {
+      font-size: 60px;
+      animation: dance 1s infinite;
+      margin: 10px;
+    }
+
+    @keyframes dance {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(20deg); }
+      100% { transform: rotate(-20deg); }
+    }
+
+    .toys {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      animation: spin 2s linear infinite;
+    }
+
+    .left-toy { left: 10px; }
+    .right-toy { right: 10px; }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg) translateY(-50%); }
+      100% { transform: rotate(360deg) translateY(-50%); }
+    }
+
+    .flower {
+      position: absolute;
+      top: 10%;
+      font-size: 30px;
+    }
+
+    .left-flower { left: 20px; }
+    .right-flower { right: 20px; }
+
+    .box-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #ffccff;
+      border: 3px dashed #ff66b2;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff99cc;
+      transition: transform 0.2s;
+    }
+
+    .box:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dancing Doll -->
+  <div class="doll">💃</div>
+
+  <!-- Toys -->
+  <div class="toys left-toy">🧸</div>
+  <div class="toys right-toy">🧸</div>
+
+  <!-- Flowers -->
+  <div class="flower left-flower">🌸</div>
+  <div class="flower right-flower">🌸</div>
+
+  <!-- Confetti -->
+  <div class="confetti">🎊🎉✨💫🎉🎊✨</div>
+
+  <!-- Smooth Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2021/09/16/audio_5f5a42e6b1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Lucky Box Section -->
+  <h2>🎁 Click a Lucky Box (1 to 10) 🎁</h2>
+  <div class="box-container">
+    <div class="box" onclick="showMessage(this)">1</div>
+    <div class="box" onclick="showMessage(this)">2</div>
+    <div class="box" onclick="showMessage(this)">3</div>
+    <div class="box" onclick="showMessage(this)">4</div>
+    <div class="box" onclick="showMessage(this)">5</div>
+    <div class="box" onclick="showMessage(this)">6</div>
+    <div class="box" onclick="showMessage(this)">7</div>
+    <div class="box" onclick="showMessage(this)">8</div>
+    <div class="box" onclick="showMessage(this)">9</div>
+    <div class="box" onclick="showMessage(this)">10</div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const messages = [
+      "🌟 You are chosen by God!",
+      "📖 John 14:6 - I am the way, the truth, and the life.",
+      "💪 Keep going, your miracle is near!",
+      "🙏 Psalm 23:1 - The Lord is my shepherd.",
+      "🌈 You are a blessing to many.",
+      "🕊️ Isaiah 41:10 - Fear not, for I am with you.",
+      "💖 God’s love never fails.",
+      "✨ Your life is filled with purpose!",
+      "📖 Romans 8:28 - All things work together for good.",
+      "🌸 Jesus loves you deeply!"
+    ];
+
+    function showMessage(box) {
+      const msg = messages[parseInt(box.textContent) - 1];
+      box.innerHTML = msg;
+    }
+  </script>
+
+</body>
+</html>
